@@ -94,13 +94,13 @@ class _MusicPlayerState extends State<MusicPlayer> {
                     iconSize: 70,
                     color: Colors.white,
               ),
-                  ElevatedButton(
-                    child: pressOn ? const Icon(Icons.pause_circle,size: 70,color: Colors.white,):const Icon(Icons.play_circle,size: 70,color: Colors.white,),
-                    onPressed: () => {
-                      setState((){
-                        pressOn = !pressOn;
-                      })
-                    },
+               IconButton(
+                 icon: Icon(pressOn ? Icons.pause_circle : Icons.play_circle),
+                      onPressed: (){
+                        setState(()=>pressOn = !pressOn);
+                      },
+                      iconSize: 70,
+                      color: Colors.white,
                   ),
               IconButton(
                 icon: Icon(Icons.skip_next),
