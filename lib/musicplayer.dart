@@ -2,19 +2,29 @@ import 'package:flutter/material.dart';
 
 
 class MusicPlayer extends StatefulWidget {
-  const MusicPlayer({Key? key, required this.photoImage}) : super(key: key);
+  const MusicPlayer({Key? key, required this.photoImage, required this.textA, required this.textB,}) : super(key: key);
   final String photoImage;
-
+  final String textA;
+  final String textB;
   @override
   _MusicPlayerState createState() => _MusicPlayerState();
 }
 
 class _MusicPlayerState extends State<MusicPlayer> {
-  List photoImage = [
-    'images/001.jpg',
-    'images/002.jpg',
-    'images/003.jpg',
+
+
+  List textA = [
+    'Aaaaa',
+    'Bbbbb',
+    'Ccccc',
   ];
+
+  List textB = [
+    'dddd dddd',
+    'eeee eeee',
+    'gggg gggg',
+  ];
+
   bool pressOn =false;
   double _value = 0.0;
   void _changeValu(double e) => setState(() => _value = e);
@@ -28,10 +38,11 @@ class _MusicPlayerState extends State<MusicPlayer> {
         //appbarのサイズ0
         preferredSize: Size.fromHeight(0),
       ),
-      body: SafeArea(
-        child: Column(
-          children: [
-          Align(
+      body: SingleChildScrollView(
+        child :SafeArea(
+          child: Column(
+            children: [
+            Align(
               alignment: Alignment.topLeft,child:
              Padding(
                 padding: const EdgeInsets.all(10.0),
@@ -42,17 +53,17 @@ class _MusicPlayerState extends State<MusicPlayer> {
                     color: Colors.white,
                ),
              ),
-          ),
-          Image.asset(photoImage[0],
-            fit: BoxFit.cover,
-            width: 350,
-            height: 350,
-          ),
+            ),
+            Image.asset(widget.photoImage,
+              fit: BoxFit.cover,
+              width: 350,
+              height: 350,
+            ),
             Column(
               children: [
                 Padding(padding: const EdgeInsets.all(10.0),),
-                Text('aaaa',style: TextStyle(color: Colors.white,fontSize: 30,fontWeight: FontWeight.bold),),
-                Text('bbbbb',style: TextStyle(color: Colors.white,fontSize: 15),),
+                Text(widget.textA,style: TextStyle(color: Colors.white,fontSize: 30,fontWeight: FontWeight.bold),),
+                Text(widget.textB,style: TextStyle(color: Colors.white,fontSize: 15),),
               ],
             ),
             Slider(
@@ -84,7 +95,7 @@ class _MusicPlayerState extends State<MusicPlayer> {
                     color: Colors.white,
               ),
                   ElevatedButton(
-                    child: pressOn ? const Icon(Icons.play_circle,size: 70,color: Colors.white,):const Icon(Icons.pause_circle,size: 70,color: Colors.white,),
+                    child: pressOn ? const Icon(Icons.pause_circle,size: 70,color: Colors.white,):const Icon(Icons.play_circle,size: 70,color: Colors.white,),
                     onPressed: () => {
                       setState((){
                         pressOn = !pressOn;
@@ -99,7 +110,8 @@ class _MusicPlayerState extends State<MusicPlayer> {
               ),
                 ],
             ),
-          ]
+            ]
+          ),
         ),
       ),
     );

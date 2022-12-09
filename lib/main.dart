@@ -33,7 +33,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  List photoImage = [
+ final List<String> photoImage = [
     'images/001.jpg',
     'images/002.jpg',
     'images/003.jpg',
@@ -111,7 +111,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       child: Stack(children: [
                         Image.asset(photoImage[index]),
                         GestureDetector(onTap: (){
-                          Navigator.of(context).push(MaterialPageRoute(builder: (context){return MusicPlayer(photoImage: photoImage[0]);
+                          Navigator.of(context).push(MaterialPageRoute(builder: (context){return MusicPlayer(photoImage: photoImage[index],textA: textA[index],textB: textB[index],);
                           }));
                           },),
                       ],),
